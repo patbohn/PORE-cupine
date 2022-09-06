@@ -24,7 +24,8 @@ suppressMessages(library(pracma))
 suppressMessages(library(data.table))
 
 #loading c++ script
-Rcpp::sourceCpp("./for_r.cpp")
+script.dir <- dirname(sys.frame(1)$ofile)
+Rcpp::sourceCpp(paste(script.dir, "./for_r.cpp"))
 
 #loading of event files
 dat= fread(paste(opt$file))
