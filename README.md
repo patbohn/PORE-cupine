@@ -10,6 +10,18 @@
 ## possible To-Dos:
 - improve SVM efficiency by training it only once and then storing it, or alternatively loading multiple samples to test at once
 
+# Updated workflow:
+
+1. install and compile f5c from
+`git clone https://github.com/patbohn/f5c_filter_signal`
+(use f5c eventalign with --filter-signal option to remove signal below 0 and above 200 before eventaligning)
+
+2. Run PORE-cupine Read_events.R and SVM.R
+
+
+
+
+
 
 # PORE-cupine
 ## Chemical utilized probing interrogated using nanopores (PORE-cupine)
