@@ -53,7 +53,3 @@ double mean_combine(NumericVector mean, NumericVector freq)
 
 	return(mx);
 }	
-			
-			
-			
-			
