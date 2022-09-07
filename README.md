@@ -4,7 +4,7 @@
 - copied over the fixed for_r.cpp into the single_gene directory
 - changed single_gene/Read_events.R to allow launching from other working directories (-> relative path of for_r.cpp now always same directory as script) 
 - changed Read_events.R and single_gene/SVM.R to store and read RData files with saveRDS and readRDS
-  - input/output files now have to be specified with full path and only a ".RData" is added
+  - input/output files now have to be specified with full path and only a ".RData" is added during saveRDS
 
 
 ## possible To-Dos:
