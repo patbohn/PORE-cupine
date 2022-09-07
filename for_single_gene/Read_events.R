@@ -36,12 +36,12 @@ getCurrentFileLocation <-  function()
     {
       this_file <- rstudioapi::getSourceEditorContext()$path
     }
-    return(trimws(dirname(this_file)))
+    return(dirname(this_file))
 }
 
 
 #script.dir <- dirname(sys.frame(1)$ofile)
-Rcpp::sourceCpp(paste(getCurrentFileLocation(), "/for_r.cpp"))
+Rcpp::sourceCpp(trimws(paste(getCurrentFileLocation(), "/for_r.cpp")))
 
 #loading of event files
 dat= fread(paste(opt$file))
