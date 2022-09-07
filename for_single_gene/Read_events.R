@@ -24,7 +24,7 @@ suppressMessages(library(pracma))
 suppressMessages(library(data.table))
 
 #loading c++ script
-library(tidyverse)
+suppressMessages(library(tidyverse))
 getCurrentFileLocation <-  function()
 {
     this_file <- commandArgs() %>% 
