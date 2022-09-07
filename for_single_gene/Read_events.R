@@ -24,8 +24,24 @@ suppressMessages(library(pracma))
 suppressMessages(library(data.table))
 
 #loading c++ script
-script.dir <- dirname(sys.frame(1)$ofile)
-Rcpp::sourceCpp(paste(script.dir, "./for_r.cpp"))
+library(tidyverse)
+getCurrentFileLocation <-  function()
+{
+    this_file <- commandArgs() %>% 
+    tibble::enframe(name = NULL) %>%
+    tidyr::separate(col=value, into=c("key", "value"), sep="=", fill='right') %>%
+    dplyr::filter(key == "--file") %>%
+    dplyr::pull(value)
+    if (length(this_file)==0)
+    {
+      this_file <- rstudioapi::getSourceEditorContext()$path
+    }
+    return(dirname(this_file))
+}
+
+
+#script.dir <- dirname(sys.frame(1)$ofile)
+Rcpp::sourceCpp(paste(getCurrentFileLocation(), "./for_r.cpp"))
 
 #loading of event files
 dat= fread(paste(opt$file))
