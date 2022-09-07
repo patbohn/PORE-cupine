@@ -41,7 +41,7 @@ getCurrentFileLocation <-  function()
 
 
 #script.dir <- dirname(sys.frame(1)$ofile)
-Rcpp::sourceCpp(trimws(paste(getCurrentFileLocation(), "/for_r.cpp")))
+Rcpp::sourceCpp(paste(getCurrentFileLocation(), "/for_r.cpp", sep=""))
 
 #loading of event files
 dat= fread(paste(opt$file))
