@@ -46,7 +46,7 @@ Rcpp::sourceCpp(paste(getCurrentFileLocation(), "/for_r.cpp", sep=""))
 #loading of event files
 dat= fread(paste(opt$file))
 print("Done loading")
-mod=opt$out
+#mod=opt$out
 
 #combine events of same strands and positions
 dat.com= dat %>% 
@@ -59,9 +59,9 @@ dat.com= dat %>%
 		  mutate(event_stdv=ifelse(event_stdv==0,0.01,event_stdv))
 
 #saving the results
-assign(paste("dat.f.combined.",mod, sep=""),dat.com)
-tmp2=(paste("dat.f.combined.",mod, sep=""))
-save(list=(tmp2),file=paste("./dat.f.combined.",mod,".RData", sep=""))
-rm(list=ls(pattern="dat.f"))
+#assign(paste("dat.f.combined.",mod, sep=""),dat.com)
+#tmp2=(paste("dat.f.combined.",mod, sep=""))
+saveRDS(dat.com,file=paste(opt$out,".RData", sep=""))
+#rm(list=ls(pattern="dat.f"))
 
 print("script ran successfully")
