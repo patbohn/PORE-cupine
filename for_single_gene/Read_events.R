@@ -36,7 +36,7 @@ getCurrentFileLocation <-  function()
     {
       this_file <- rstudioapi::getSourceEditorContext()$path
     }
-    return(trinws(dirname(this_file)))
+    return(trimws(dirname(this_file)))
 }
 
 
