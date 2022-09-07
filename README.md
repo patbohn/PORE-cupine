@@ -1,11 +1,11 @@
-#Changes:
+# Changes by me:
 - removed nanopolish.rar files to reduce size (replaced nanopolish with f5c in workflow, including the optional filter signal step)
 - copied over the fixed for_r.cpp into the single_gene directory
 - changed single_gene/Read_events.R to allow launching from other working directories (-> relative path of for_r.cpp now always same directory as script) and output files now have to be specified with full path and only a ".RData" is added
 - changed Read_events.R and single_gene/SVM.R to store and read RData files with saveRDS and readRDS
 - changed script header to launch with any installed version of Rscript
 
-# possible To-Dos:
+## possible To-Dos:
 - improve SVM efficiency by training it only once and then storing it, or alternatively loading multiple samples to test at once
 
 
