@@ -1,4 +1,4 @@
-#!/usr/bin/env Rscript-3.4.1
+#!/usr/bin/env Rscript
 suppressMessages(library(optparse))
 
 #for command line parsing
