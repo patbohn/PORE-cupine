@@ -35,7 +35,7 @@ if(NROW(unique(dat.mod2$read_name))<10)
 #unmod.name=load(opt$unmod)
 #dat.unmod_t2=get(unmod.name)
 #rm(list=ls(pattern="dat.f"))
-dat.unmod_t2=(opt$unmod)
+dat.unmod_t2=readRDS(opt$unmod)
 dat.unmod_t2[dat.unmod_t2[,"event_stdv"]==0,"event_stdv"]=0.01
 
 t=opt$length*0.5
