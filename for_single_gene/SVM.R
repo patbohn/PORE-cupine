@@ -24,18 +24,18 @@ if (is.null(opt$unmod) | is.null(opt$output)|is.null(opt$mod) ){
 suppressMessages(library(dplyr))
 suppressMessages(library(e1071))
 
-mod.name=load(paste(opt$mod,sep=""))
-dat.mod2=get(mod.name)
-rm(list=ls(pattern="dat.f"))
+#mod.name=load(paste(opt$mod,sep=""))
+#dat.mod2=get(mod.name)
+dat.mod2=readRDS(opt$mod)
 dat.mod2[dat.mod2[,"event_stdv"]==0,"event_stdv"]=0.01
 
 if(NROW(unique(dat.mod2$read_name))<10)
 	next()
 
-unmod.name=load(opt$unmod)
-dat.unmod_t2=get(unmod.name)
-rm(list=ls(pattern="dat.f"))
-
+#unmod.name=load(opt$unmod)
+#dat.unmod_t2=get(unmod.name)
+#rm(list=ls(pattern="dat.f"))
+dat.unmod_t2=(opt$unmod)
 dat.unmod_t2[dat.unmod_t2[,"event_stdv"]==0,"event_stdv"]=0.01
 
 t=opt$length*0.5
@@ -106,7 +106,6 @@ dat.output=bind_cols(as_tibble(gene_mat),as_tibble(3:(pos+3)),as_tibble(nt),dat.
 
 colnames(dat.output)=c("Gene","Position","NT","Mod_percentage","Mod_number","Mod_strands","Training_strands")
 
-write.table(dat.output,paste("Output_",gene_name,opt$output,".csv",sep=""),sep = ",",row.names=FALSE)
+write.table(dat.output,opt$output,sep = ",",row.names=FALSE)
 
-rm(list=ls(pattern="dat."))
 print("done")
